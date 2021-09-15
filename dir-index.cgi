@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# dir-index.cgi - print a "directory index" for LEDE download pages.
+# dir-index.cgi - print a "directory index" for OpenWrt download pages.
 #
 # See the README.md file for a description of the files this script generates
 
@@ -76,13 +76,14 @@ sub printentry {
   }
 
 # All preparatory work complete: here are the variables
-#   $entry:     "./SampleData/config.seed"
-#   $basename:  "config.seed"
+#   $entry:     "./SampleData/config.buildinfo"
+#   $basename:  "config.buildinfo"
 #   $imagename: $basename, or shortened version of image name
 #   $link:      "" or "-> actual-file-following-link"
 #   $checksum:  the sum, or "-"
 #   $size:      the size ("1234.5 KB") or "-"
 #   $date:      in the form "Tue Feb 21 04:03:38 2017"
+
 
   # Output the html for the row
   print '  <tr>';
@@ -125,7 +126,7 @@ sub print404 {
   print "<p>The requested resource could not be found on the server.</p>";
   print "<p>Try returning to the <a href=\"/\">root directory</a> to browse available directories.</p>";
   print "</div>\n";
-  print "</body></html>";
+  print "</body></html>\n";
 }
 
 # printtop() - Print the stuff at the "top of the page"
@@ -155,7 +156,7 @@ sub printtop {
   print "<html lang='en'>\n";
   print "<head>\n";
   print "<meta charset='utf-8'/>\n";
-  print "<link rel='stylesheet' href='/static/style.css' />\n";
+  print "<link rel='stylesheet' href='./static/style.css' />\n";
   printf "<title>Index of %s</title>\n", $virt;
   print "</head>\n";
 
@@ -203,7 +204,7 @@ sub printheader{
     print <<EOT;
       <header>
       <div>
-        <img src="/static/logo.png" alt="Download OpenWrt Firmware">
+        <img src="./static/logo.png" alt="Download OpenWrt Firmware">
       </div>
     </header>
 EOT
@@ -222,14 +223,14 @@ EOT
 }
 
 # printtargets - print 'targets' directories
-#   This special cases directories of LEDE image files and their associated meta-files
+#   This special cases directories of OpenWrt image files and their associated meta-files
 sub printtargets {
   my $entries = shift;
   my $phys = shift;
   my $virt = shift;
   my @metafiles = (                         # names of files to be displayed as "meta files" at the top of the page
     qr/packages/,
-    qr/config.seed/,
+    qr/config.buildinfo/,
     qr/manifest/,
     qr/lede-imagebuilder/,
     qr/lede-sdk/,
@@ -238,6 +239,12 @@ sub printtargets {
     qr/[Oo]pen[Ww]rt-[Tt]oolchain/,
     qr/md5sums/,
     qr/sha256sums/,
+    qr/kmods/,
+    qr/feeds.buildinfo/,
+    qr/profiles.json/,
+    qr/sha256sums.asc/,
+    qr/sha256sums.sig/,
+    qr/version.buildinfo/,
     );
 
   my $metafiles_re = join '|', @metafiles;  # build the master regex for meta files
@@ -253,12 +260,12 @@ sub printtargets {
   }
 
   # To trim image file names intelligently, factor in the following:
-  #   $virt e.g.,          "releases/17.01.0/targets/ar71xx/generic/"
   #   $phys e.g.,          "./SampleData/" and
-  #   typical entry, e.g., "./SampleData/lede-17.01.0-r3205-59508e3-ar71xx-generic-archer-c7-v2-squashfs-sysupgrade.bin"
+  #   $virt e.g.,          "releases/21.02.0/targets/ath79/generic/"
+  #   typical entry, e.g., "./SampleData/openwrt-21.02.0-ath79-generic-netgear_wndr3800-squashfs-factory.img"
 
-  # $trimmedprefix is derived from the last two items of $virt, e.g., "ar71xx-generic-"
-  # $prefix comes from the first of @images array that begins with "lede" after ignoring the $phys string
+  # $trimmedprefix is derived from the last two items of $virt, e.g., "ath79-generic-"
+  # $prefix comes from the first of @images array after ignoring the $phys string
 
   my ($target, $subtarget, $tuple, %prefixes, $prefix);
 
@@ -267,6 +274,13 @@ sub printtargets {
 
   $tuple = $target . ($subtarget ? '/' . $subtarget : '');
 
+# Debugging ...
+# printf 'Virt: "%s" <br/>Phys: "%s"<br/>Target: "%s"<br/>Subtarget: "%s"<br/>Tuple: "%s"',
+#         $virt,
+#         $phys,
+#         $target,
+#         $subtarget,
+#         $tuple;
 
   # Build a mapping table (prefix => number of occurences)
   # For each image basename, try to find a prefix that either ends in -$target-$subtarget- or in -$target-
@@ -338,7 +352,6 @@ EOT
 }
 
 # printdirectory - print any directory in a pleasing format
-#   This substantially copies the format used by downloads.lede-project.org in early 2017
 sub printdirectory {
   my $entries = shift;
   my $phys = shift;
@@ -435,7 +448,7 @@ else {
 
   printh1($virt);
 
-  if ($virt =~ m!/targets/[^/]+/[^/]+/?$! || # special handling for 'targets' - LEDE image file directories
+  if ($virt =~ m!/targets/[^/]+/[^/]+/?$! || # special handling for 'targets' - image file directories
        $virt =~ m!/(backfire|kamikaze)/[^/]+/[^/]+/?$! ||
        $virt =~ m!/(attitude_adjustment|barrier_breaker|chaos_calmer)/[^/]+/[^/]+/[^/]+/?$!) {
     printtargets(\@entries, $phys, $virt)
