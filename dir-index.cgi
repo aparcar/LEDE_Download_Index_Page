@@ -121,16 +121,16 @@ sub printh1 {
 sub print404 {
   my $virt = shift;
   print "<div class='container'>\n";
-  printf "<h1>Not found: %s</h1>\n", htmlenc($virt);
+  print "<h1>Page not found</h1>\n";
   print "<hr>";
-  print "<p>The requested resource could not be found on the server.</p>";
+  printf "<p>The requested resource <span class='sh'>%s</span> could not be found on the server.</p>", htmlenc($virt);;
   print "<p>Try returning to the <a href=\"/\">root directory</a> to browse available directories.</p>";
   print "</div>\n";
   print "</body></html>\n";
 }
 
 # printtop() - Print the stuff at the "top of the page"
-#  - HTTP headers (only if being run as a CGI)
+#  - HTTP headers (only if being run as a CGI - but see comment below)
 #  - HTML content including
 #     - <!DOCTYPE html>
 #     - opening <html> tag
@@ -144,8 +144,10 @@ sub printtop {
   # HTTP Headers, followed by \n\n
 
   use constant IS_CGI => exists $ENV{'GATEWAY_INTERFACE'};
-  # Note - to avoid the ugly HTTP headers in the browser during testing
-  # wrap the next few lines in `if (IS_CGI) { ... }`
+  # Note - to avoid displaying the HTTP headers in the browser during testing,
+  #    wrap the next few lines in `if (IS_CGI) { ... }`
+  # Or don't worry about it. It's sensible to ignore the HTTP status lines during testing
+  #    since that leaves one less bit of machinery to go wrong in production...
   if ($htmlstatus ne "") {
     printf "%s\n", $htmlstatus;
   }

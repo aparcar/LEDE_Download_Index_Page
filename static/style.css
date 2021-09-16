@@ -1,12 +1,15 @@
+/*
 @media (min-resolution: 200dpi), (max-width: 1000px) {
   .container {
     width: 100% !important;
   }
 }
+*/
 
-@media (min-resolution: 400dpi), (max-width: 600px) {
-  /* move version selection in a new line*/
-  #models-autocomplete {
+/* move version selection in a new line*/
+/*
+@media (min-resolution: 400dpi), (max-width: 600px) { 
+ #models-autocomplete {
     flex-direction: column;
   }
   #versions {
@@ -16,7 +19,7 @@
     margin-right: 0px !important;
   }
 }
-
+*/
 body {
   font-family: "Arial", sans-serif;
   background-color: #fff;
@@ -24,10 +27,15 @@ body {
   margin: 0;
 }
 
+/* OpenWrt Wiki link color is #002843; */
+/* Original little-steps branch color is dark:  #337ab7; */
+/* OpenWrt logo color ("main bright color") is #00A3E1; */
+
 a {
-  color: #002843;
+  color: #00A3E1;
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
@@ -103,7 +111,7 @@ header>div {
 }
 
 header>div>img {
-    height: 7em;
+    height: 4em;
     padding: 1em;
 }
 
@@ -129,7 +137,7 @@ header > div {
 .container {
   padding-left: 1.2em;
   padding-right: 1.2em;
-  width: 60%;
+  width: auto;
   box-sizing: border-box;
   margin-top: 1.2em;
   margin-right: auto;
@@ -280,7 +288,7 @@ table {
 }
 
 th {
-    background: #002843;
+    background:  #002b49;
     font-size: 14px;
     line-height: 24px;
     border: none;
@@ -300,13 +308,17 @@ tr:nth-child(2n+1) { background: #eee; }
 
 th,
 td {
-    width: auto
-    font-size: 10px;
+    width: auto;
+    font-size: 14px;
     height: 20px;
     vertical-align: middle;
     white-space: nowrap;
     padding: 0.2em 0.5em;
     border-bottom: 1px solid #ccc;
+}
+
+.n {
+  font-weight: bold;
 }
 
 .s {
