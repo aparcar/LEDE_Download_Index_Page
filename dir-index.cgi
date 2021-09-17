@@ -158,7 +158,7 @@ sub printtop {
   print "<html lang='en'>\n";
   print "<head>\n";
   print "<meta charset='utf-8'/>\n";
-  print "<link rel='stylesheet' href='./static/style.css' />\n";
+  print "<link rel='stylesheet' href='/static/style.css' />\n";
   printf "<title>Index of %s</title>\n", $virt;
   print "</head>\n";
 
@@ -206,7 +206,7 @@ sub printheader{
     print <<EOT;
       <header>
       <div>
-        <img src="./static/logo.png" alt="Download OpenWrt Firmware">
+        <img src="/static/logo.png" alt="Download OpenWrt Firmware">
       </div>
     </header>
 EOT

@@ -20,19 +20,22 @@
   }
 }
 */
+
 body {
-  font-family: "Arial", sans-serif;
-  background-color: #fff;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
   padding: 0;
   margin: 0;
 }
 
 /* OpenWrt Wiki link color is #002843; */
-/* Original little-steps branch color is dark:  #337ab7; */
-/* OpenWrt logo color ("main bright color") is #00A3E1; */
+/* Original little-steps link color is very dark:  #337ab7; */
+/* OpenWrt Logo Guidelines says bright blue color should be #00B5E2; */
 
 a {
-  color: #00A3E1;
+  color: #00B5E2;
   text-decoration: none;
 }
 
@@ -111,8 +114,8 @@ header>div {
 }
 
 header>div>img {
-    height: 4em;
-    padding: 1em;
+    height: 3em;
+    padding: 0.75em;
 }
 
 h6 {
@@ -277,7 +280,7 @@ header > div {
 }
 
 table {
-    font-size: 13px;
+    /*font-size: 13px;*/
     width: 100%;
     box-shadow: 0 0 0.5em #999;
     margin: 0;
