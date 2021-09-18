@@ -18,7 +18,7 @@
 
 # Display a "target" directory with OpenWrt firmware binary files
 # 
-export DOCUMENT_ROOT="./SampleData/"                          # becomes $phys
+export DOCUMENT_ROOT="./test/"                          # becomes $phys
 export PATH_INFO="releases/21.02.0/targets/ath79/generic/"   # becomes $virt
 
 perl dir-index.cgi > targets.html
@@ -39,7 +39,7 @@ perl dir-index.cgi > 404.html
 
 # Display JSON output
 # 
-export DOCUMENT_ROOT="./SampleData"                          	# becomes $phys
+export DOCUMENT_ROOT="./test"                          	# becomes $phys
 export PATH_INFO="releases/21.02.0/targets/"   					# becomes $virt
 export QUERY_STRING="json"
 

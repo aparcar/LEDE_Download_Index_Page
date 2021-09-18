@@ -24,7 +24,7 @@
 body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 14px;
-  line-height: 1.42857143;
+  line-height: 1.4;
   color: #333;
   padding: 0;
   margin: 0;
@@ -33,6 +33,7 @@ body {
 /* OpenWrt Wiki link color is #002843; */
 /* Original little-steps link color is very dark:  #337ab7; */
 /* OpenWrt Logo Guidelines says bright blue color should be #00B5E2; */
+/* But... the actual SVG in 43b0e8; */
 
 a {
   color: #00B5E2;
@@ -108,7 +109,7 @@ header {
 header>div {
   margin-right: auto;
   margin-left: auto;
-  width: 60%;
+  width: auto;
     display: flex;
     position: relative;
     align-items: center;
@@ -251,8 +252,8 @@ header > div {
 }
 
 table {
-    /*font-size: 13px;*/
-    width: 100%;
+    /*table-layout:  fixed;*/
+    font-size: 14px;
     box-shadow: 0 0 0.5em #999;
     margin: 0;
     border: none !important;
@@ -263,7 +264,6 @@ table {
 
 th {
     background:  #002b49;
-    font-size: 14px;
     line-height: 24px;
     border: none;
     text-align: left;
@@ -282,8 +282,6 @@ tr:nth-child(2n+1) { background: #eee; }
 
 th,
 td {
-    width: auto;
-    font-size: 14px;
     height: 20px;
     vertical-align: middle;
     white-space: nowrap;
@@ -297,18 +295,12 @@ td {
 
 .s {
     text-align: right;
-    white-space: nowrap;
-    width: 1%;
 }
 
 .d {
     text-align: center;
-    white-space: nowrap;
-    width: 1%;
 }
 
 .sh {
     font-family: monospace;
-    white-space: nowrap;
-    width: 1%;
 }
