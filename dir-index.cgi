@@ -159,7 +159,7 @@ sub printtop {
   print "<head>\n";
   print "<meta charset='utf-8'/>\n";
   print "<link rel='stylesheet' href='/static/style.css' />\n";
-  printf "<title>Index of %s</title>\n", $virt;
+  printf "<title>Index of %s</title>\n", htmlenc($virt);
   print "</head>\n";
 
   # HTML body
@@ -219,7 +219,8 @@ EOT
 sub printfooter {
 print <<EOT;
   <footer>
-  </footer>\n
+  </footer>
+
 EOT
 
 }
