@@ -1,0 +1,3 @@
+Content-Type: application/json
+
+["/openwrt-imagebuilder-21.02.0-ath79-generic.Linux-x86_64.tar.xz","/.DS_Store","/openwrt-21.02.0-ath79-generic-netgear_wndr3800-squashfs-factory.img","/openwrt-21.02.0-ath79-generic-netgear_wndr3800-squashfs-sysupgrade.bin","/version.buildinfo","/profiles.json","/openwrt-sdk-21.02.0-ath79-generic_gcc-8.4.0_musl.Linux-x86_64.tar.xz","/sha256sums.sig","/kernel-debug.tar.zst","/openwrt-21.02.0-ath79-generic.manifest","/openwrt-21.02.0-ath79-generic-tplink_archer-a7-v5-squashfs-factory.bin","/config.buildinfo","/sha256sums","/feeds.buildinfo","/openwrt-21.02.0-ath79-generic-tplink_archer-a7-v5-squashfs-sysupgrade.bin","/sha256sums.asc"]
