@@ -1,0 +1,32 @@
+{
+    "branches": {
+        "21.02": {
+            "minor": {
+                "21.02.2": {
+                    "release_date": "Fri, 25 Feb 2022"
+                },
+                "21.02.1": {
+                    "release_date": ""
+                },
+                "21.02.0": {
+                    "release_date": ""
+                }
+            },
+            "git_branch": "openwrt-21.02"
+        },
+        "19.07": {
+            "minor": {
+                "19.07.9": {
+                    "release_date": "Fri, 25 Feb 2022"
+                },
+                "19.07.8": {
+                    "release_date": ""
+                },
+                "19.07.7": {
+                    "release_date": ""
+                }
+            },
+            "git_branch": "openwrt-19.07"
+        }
+    }
+}
